@@ -30,11 +30,11 @@
         {
             this.pnlAzul = new System.Windows.Forms.Panel();
             this.btnInicio = new System.Windows.Forms.Button();
-            this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.btnSobre = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnFaq = new System.Windows.Forms.Button();
             this.btnLivros = new System.Windows.Forms.Button();
+            this.pbxLogo = new System.Windows.Forms.PictureBox();
             this.pnlAzul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             this.SuspendLayout();
@@ -67,16 +67,6 @@
             this.btnInicio.Text = "Inicio";
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
-            // 
-            // pbxLogo
-            // 
-            this.pbxLogo.Image = global::WindowsFormsClient.Properties.Resources.online_library;
-            this.pbxLogo.Location = new System.Drawing.Point(74, 12);
-            this.pbxLogo.Name = "pbxLogo";
-            this.pbxLogo.Size = new System.Drawing.Size(146, 131);
-            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxLogo.TabIndex = 11;
-            this.pbxLogo.TabStop = false;
             // 
             // btnSobre
             // 
@@ -137,6 +127,16 @@
             this.btnLivros.Text = "Lista de Livros";
             this.btnLivros.UseVisualStyleBackColor = true;
             this.btnLivros.Click += new System.EventHandler(this.btnLivros_Click);
+            // 
+            // pbxLogo
+            // 
+            this.pbxLogo.Image = global::WindowsFormsClient.Properties.Resources.online_library;
+            this.pbxLogo.Location = new System.Drawing.Point(74, 12);
+            this.pbxLogo.Name = "pbxLogo";
+            this.pbxLogo.Size = new System.Drawing.Size(146, 131);
+            this.pbxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbxLogo.TabIndex = 11;
+            this.pbxLogo.TabStop = false;
             // 
             // FormHome
             // 

@@ -19,6 +19,7 @@ namespace WindowsFormsClient
 
         private void btnInicio_Click(object sender, EventArgs e)
         {
+               //_userControlHome.Visible = true; 
 
         }
 
