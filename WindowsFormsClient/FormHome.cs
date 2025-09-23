@@ -17,6 +17,32 @@ namespace WindowsFormsClient
             InitializeComponent();
         }
 
-        
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLivros_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnFaq_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSobre_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            FormLogin _formLogin = new FormLogin();
+            _formLogin.Show();
+            this.Hide();
+
+        }
     }
 }
