@@ -20,6 +20,7 @@ namespace WindowsFormsClient
         }
 
         private ClassUser _user = new ClassUser(0, "", "", "");
+        private ConnClass _conn = new ConnClass();
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -58,6 +59,19 @@ namespace WindowsFormsClient
                 this.Hide();
             }
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+            }
+            catch 
+            { 
+            
+            
+            }
         }
     }
 }
