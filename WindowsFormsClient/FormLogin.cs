@@ -50,15 +50,15 @@ namespace WindowsFormsClient
             password = tbxSenha.Text;
 
             //Processamento
-            string mensagem = _user.Entrar(email, password);
-            MessageBox.Show(mensagem, "Login"); //Saída
+            _user.Entrar(email, password);
+            //MessageBox.Show(mensagem, "Login"); //Saída
 
-            if (mensagem == "Login feito com sucesso.")
-            { 
-                FormHome _formHome = new FormHome();
-                _formHome.Show();
-                this.Hide();
-            }
+            //if ()
+            //{ 
+            //    FormHome _formHome = new FormHome();
+            //    _formHome.Show();
+            //    this.Hide();
+            //}
 
         }
 

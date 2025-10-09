@@ -54,7 +54,12 @@ namespace ClassLibraryUser
 
             
             }
-            catch { }
+            catch(Exception erro) 
+            {
+                Console.WriteLine(erro.Message); 
+            
+            }
+            return dt;
             
             
             //if (email == "teste@gmail.com" && password == "teste123")
