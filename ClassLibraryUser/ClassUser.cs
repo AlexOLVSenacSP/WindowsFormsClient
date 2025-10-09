@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace ClassLibraryUser
 {
@@ -14,6 +16,8 @@ namespace ClassLibraryUser
         private string Email{ get; set; }
         private string Password { get; set; }
 
+        private ConnClass _conn = new ConnClass();
+
         //Construtor
         public ClassUser(int _id, string _name, string _email, string _password)
         {
@@ -23,14 +27,41 @@ namespace ClassLibraryUser
             this.Password = _password;
         }
 
-        //Métodos
-        public string Entrar(string email, string password)
+        //Métodos (CRUD READ = SELECT ) 
+        public DataTable Entrar(string email, string password) // antes string...tudo C#
         {
-            if(email == "teste@gmail.com" && password == "teste123")
+            // DataTable dt = new DataTable(); usa toda memoria da sala 
+            var dt = new DataTable();// var similar Varchar variavel temporario
+            string sql = "SELECT * FROM Usuario WHERE email=@Email AND senha=@password";
+            
+            try
             {
-                return "Login feito com sucesso.";
+                using (SqlConnection cn = _conn.GetConnection())
+                {
+                    cn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sql,cn))
+                    {
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Password", password);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(dt);
+                        }
+                    }
+
+                }
+
+            
             }
-            return "E-mail e/ou senha inválidos.";
+            catch { }
+            
+            
+            //if (email == "teste@gmail.com" && password == "teste123")
+            //{
+            //    return "login feito com sucesso.";
+            //}
+            //return "e-mail e/ou senha inválidos.";
         }
 
         //Function to Admin

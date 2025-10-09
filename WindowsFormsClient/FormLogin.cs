@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,7 +21,7 @@ namespace WindowsFormsClient
         }
 
         private ClassUser _user = new ClassUser(0, "", "", "");
-        private ConnClass _conn = new ConnClass();
+        //private ConnClass _conn = new ConnClass(); comentou porque colocou usuario
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
@@ -61,17 +62,24 @@ namespace WindowsFormsClient
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        //private void button1_Click(object sender, EventArgs e) // somente para teste.
+        //{
+        //    try
+        //    {
+        //        using (SqlConnection cn = _conn.GetConnection())
+        //        {
+        //            cn.Open();
+        //            MessageBox.Show(cn.ToString(), "Banco de Dados");
 
-            }
-            catch 
-            { 
+        //        }
+
+        //    }
+        //    catch (Exception erro) // pegar 
+
+        //    {
+        //        MessageBox.Show(erro.ToString(), "Erro no banco de dados");
             
-            
-            }
+        //    }
         }
     }
-}
+
