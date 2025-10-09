@@ -50,7 +50,24 @@ namespace WindowsFormsClient
             password = tbxSenha.Text;
 
             //Processamento
-            _user.Entrar(email, password);
+            DataTable dt = _user.Entrar(email, password);
+
+            if (dt.Rows.Count > 0)
+
+            {
+
+                MessageBox.Show("Bem Vindo");
+                FormHome _formHome = new FormHome();
+                    _formHome.Show();
+                    this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("Seu email ou senha esta incorreta");
+            }
+
+
             //MessageBox.Show(mensagem, "Login"); //Saída
 
             //if ()
