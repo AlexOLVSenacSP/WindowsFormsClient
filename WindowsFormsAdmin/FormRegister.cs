@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibraryUser;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +17,25 @@ namespace WindowsFormsAdmin
         {
             InitializeComponent();
         }
+
+        private void btnRegistrar_Click(object sender, EventArgs e)
+        {
+
+            // incialização
+            string nome = tbxNome.Text;
+            string email = tbxEmail.Text;
+            string senha = tbxSenha.Text;
+
+            ClassUser _user = new ClassUser(0, nome, email, senha);
+
+            if (_user.Registrar())
+            {
+
+               MessageBox.Show("Sucesso");
+
+            }
+        }
+
     }
 }
+

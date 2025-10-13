@@ -41,17 +41,23 @@ namespace WindowsFormsAdmin
 
             {
 
-                MessageBox.Show("Bem Vindo");
-                //FormHome _formHome = new FormHome();
-                //_formHome.Show();
+                MessageBox.Show("Sucesso");
+                FormHome _formHome = new FormHome();
+                _formHome.Show();
                 this.Hide();
 
             }
             else
             {
-                MessageBox.Show("Seu email ou senha esta incorreta");
+                MessageBox.Show("Sem Sucesso");
             }
         }
 
+        private void llblRegistrar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            FormRegister _formRegister = new FormRegister();
+            _formRegister.Show();
+            this.Hide();
+        }
     }
 }

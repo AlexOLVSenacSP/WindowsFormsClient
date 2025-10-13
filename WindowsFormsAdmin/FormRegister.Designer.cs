@@ -75,6 +75,7 @@
             this.btnRegistrar.TabIndex = 3;
             this.btnRegistrar.Text = "Registrar";
             this.btnRegistrar.UseVisualStyleBackColor = true;
+            this.btnRegistrar.Click += new System.EventHandler(this.btnRegistrar_Click);
             // 
             // tbxNome
             // 
@@ -144,6 +145,7 @@
             this.Controls.Add(this.lblNome);
             this.Name = "FormRegister";
             this.Text = "FormRegister";
+            
             this.ResumeLayout(false);
             this.PerformLayout();
 
