@@ -70,9 +70,39 @@ namespace ClassLibraryUser
         }
 
         //Function to Admin
-        public string Registrar(string name, string email, string password)
+        public bool Registrar()
         {
-            return "";
+           
+            string sql = "Insert INTO Usuario (nome,email,senha) Values (@Nome, @Email, @Senha)";
+
+            try
+            {
+                using (SqlConnection cn = _conn.GetConnection())
+                {
+                    cn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sql, cn))
+                    {
+                        cmd.Parameters.AddWithValue("@Nome", this.Name);
+                        cmd.Parameters.AddWithValue("@Email", this.Email);
+                        cmd.Parameters.AddWithValue("@Senha", this.Password);
+
+
+                        int linhasAfetada = cmd.ExecuteNonQuery();
+                        return linhasAfetada > 0;
+                        
+                    }
+
+                }
+
+
+            }
+            catch (Exception erro)
+            {
+                Console.WriteLine(erro.Message);
+                return false;
+
+            }
+            //return dt;
         }
     }
 }

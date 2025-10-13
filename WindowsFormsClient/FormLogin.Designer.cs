@@ -42,6 +42,7 @@
             this.pbxSenha = new System.Windows.Forms.PictureBox();
             this.pbxUsuario = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.llblRegistrar = new System.Windows.Forms.LinkLabel();
             this.pnlAzul.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxSenha)).BeginInit();
@@ -208,7 +209,16 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Teste";
             this.button1.UseVisualStyleBackColor = true;
-            
+            // 
+            // llblRegistrar
+            // 
+            this.llblRegistrar.AutoSize = true;
+            this.llblRegistrar.Location = new System.Drawing.Point(639, 601);
+            this.llblRegistrar.Name = "llblRegistrar";
+            this.llblRegistrar.Size = new System.Drawing.Size(132, 13);
+            this.llblRegistrar.TabIndex = 10;
+            this.llblRegistrar.TabStop = true;
+            this.llblRegistrar.Text = "Não tem usuario , Registre";
             // 
             // FormLogin
             // 
@@ -216,6 +226,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(900, 700);
+            this.Controls.Add(this.llblRegistrar);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pbxSenha);
             this.Controls.Add(this.pbxUsuario);
@@ -255,6 +266,7 @@
         private System.Windows.Forms.PictureBox pbxUsuario;
         private System.Windows.Forms.PictureBox pbxSenha;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.LinkLabel llblRegistrar;
     }
 }
 

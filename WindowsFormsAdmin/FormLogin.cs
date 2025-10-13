@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibraryUser;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,5 +17,41 @@ namespace WindowsFormsAdmin
         {
             InitializeComponent();
         }
+
+        private ClassUser _user = new ClassUser(0,"","","");
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            //Inicialização
+            //string nome = "";
+            string email = "";
+            string password = "";
+
+
+            //Entrada de dados
+
+            //nome = tbxNome.Text;           
+            email = tbxEmail.Text;
+            password = tbxSenha.Text;
+
+            //Processamento
+            DataTable dt = _user.Entrar(email, password);
+
+            if (dt.Rows.Count > 0)
+
+            {
+
+                MessageBox.Show("Bem Vindo");
+                //FormHome _formHome = new FormHome();
+                //_formHome.Show();
+                this.Hide();
+
+            }
+            else
+            {
+                MessageBox.Show("Seu email ou senha esta incorreta");
+            }
+        }
+
     }
 }
