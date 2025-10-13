@@ -104,5 +104,42 @@ namespace ClassLibraryUser
             }
             //return dt;
         }
+
+        public bool Atualizar()
+        {
+
+            string sql = "UPDATE Usuario SET nome@Nome, email=@Email, senha=@Senha WHERE id_Usuario=@idUsuario;";
+
+            try
+            {
+                using (SqlConnection cn = _conn.GetConnection())
+                {
+                    cn.Open();
+                    using (SqlCommand cmd = new SqlCommand(sql, cn))
+                    {
+                        cmd.Parameters.AddWithValue("@idUsuario", this.Id);
+                        cmd.Parameters.AddWithValue("@Nome", this.Name);
+                        cmd.Parameters.AddWithValue("@Email", this.Email);
+                        cmd.Parameters.AddWithValue("@Senha", this.Password);
+
+
+                        int linhasAfetada = cmd.ExecuteNonQuery();
+                        return linhasAfetada > 0;
+
+                    }
+
+                }
+
+
+            }
+            catch (Exception erro)
+            {
+                Console.WriteLine(erro.Message);
+                return false;
+
+            }
+            
+        }
+
     }
 }
