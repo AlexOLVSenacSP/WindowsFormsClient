@@ -35,7 +35,7 @@ namespace ClassLibraryUser
         {
             // DataTable dt = new DataTable(); usa toda memoria da sala 
             var dt = new DataTable();// var similar Varchar variavel temporario
-            string sql = "SELECT * FROM Product WHERE Name LIKE @Name OR Description LIKE @Description"; // Name Description igua BD
+            string sql = "SELECT * FROM Product WHERE Name LIKE @Name;";// Name Description igua BD
 
             try
             {
