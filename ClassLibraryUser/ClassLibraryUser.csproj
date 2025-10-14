@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassProd.cs" />
     <Compile Include="ConnClass.cs" />
     <Compile Include="ClassUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,48 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
-using System.Data;
 
 namespace ClassLibraryUser
 {
-    public class ClassUser
+    public class ClassProd
     {
-        //Propriedades
-        private int Id {  get; set; }
+        //Propriedades com todos que iniciam em maiusculo
+        private int Id_Product { get; set; }
         private string Name { get; set; }
-        private string Email{ get; set; }
-        private string Password { get; set; }
+        private string Description { get; set; }
+        private double Price { get; set; }
+        private bool Status { get; set; }
 
         private ConnClass _conn = new ConnClass();
 
-        //Construtor
-        public ClassUser(int _id, string _name, string _email, string _password)
+        //Construtor com todos com _
+        public ClassProd(int _id, string _name, string _description, double _price, bool _status)
         {
-            this.Id = _id;
+            this.Id_Product = _id;
             this.Name = _name;
-            this.Email = _email;
-            this.Password = _password;
+            this.Description = _description;
+            this.Price = _price;
+            this.Status = _status;
+            
         }
 
-        //Métodos (CRUD READ = SELECT ) 
-        public DataTable Entrar(string email, string password) // antes string...tudo C#
+        //Métodos (CRUD READ = SELECT ) = Pesquisar 
+        public DataTable ProductSearch(string name, string description) // antes string...tudo C#
         {
             // DataTable dt = new DataTable(); usa toda memoria da sala 
             var dt = new DataTable();// var similar Varchar variavel temporario
-            string sql = "SELECT * FROM Usuario WHERE email=@Email AND senha=@password";
-            
+            string sql = "SELECT * FROM Product WHERE Name LIKE @Name OR Description LIKE @Description"; // Name Description igua BD
+
             try
             {
                 using (SqlConnection cn = _conn.GetConnection())
                 {
                     cn.Open();
-                    using (SqlCommand cmd = new SqlCommand(sql,cn))
+                    using (SqlCommand cmd = new SqlCommand(sql, cn))
                     {
-                        cmd.Parameters.AddWithValue("@Email", email);
-                        cmd.Parameters.AddWithValue("@Password", password);
+                        cmd.Parameters.AddWithValue("@Name", $"% {name} %");
+                        cmd.Parameters.AddWithValue("@Description", $"% {description} %");
 
                         using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                         {
@@ -52,16 +55,16 @@ namespace ClassLibraryUser
 
                 }
 
-            
+
             }
-            catch(Exception erro) 
+            catch (Exception erro)
             {
-                Console.WriteLine(erro.Message); 
-            
+                Console.WriteLine(erro.Message);
+
             }
             return dt;
-            
-            
+
+
             //if (email == "teste@gmail.com" && password == "teste123")
             //{
             //    return "login feito com sucesso.";
@@ -72,8 +75,8 @@ namespace ClassLibraryUser
         //Function to Admin
         public bool Registrar()
         {
-           
-            string sql = "Insert INTO Usuario (nome,email,senha) Values (@Nome, @Email, @Senha)";
+
+            string sql = "Insert INTO Product (name,description,price,status) Values (@Nome, @Description, @Price, @Status)";
 
             try
             {
@@ -83,13 +86,14 @@ namespace ClassLibraryUser
                     using (SqlCommand cmd = new SqlCommand(sql, cn))
                     {
                         cmd.Parameters.AddWithValue("@Nome", this.Name);
-                        cmd.Parameters.AddWithValue("@Email", this.Email);
-                        cmd.Parameters.AddWithValue("@Senha", this.Password);
+                        cmd.Parameters.AddWithValue("@Description", this.Description);
+                        cmd.Parameters.AddWithValue("@Price", this.Price);
+                        cmd.Parameters.AddWithValue("@Status", this.Status);
 
 
                         int linhasAfetada = cmd.ExecuteNonQuery();
                         return linhasAfetada > 0;
-                        
+
                     }
 
                 }
@@ -108,7 +112,7 @@ namespace ClassLibraryUser
         public bool Atualizar()
         {
 
-            string sql = "UPDATE Usuario SET nome@Nome, email=@Email, senha=@Senha WHERE id_Usuario=@idUsuario;";
+            string sql = "UPDATE Product SET name@Name, description=@Description, price=@Price, status=@Status WHERE id_product=@id;";
 
             try
             {
@@ -117,10 +121,10 @@ namespace ClassLibraryUser
                     cn.Open();
                     using (SqlCommand cmd = new SqlCommand(sql, cn))
                     {
-                        cmd.Parameters.AddWithValue("@idUsuario", this.Id);
-                        cmd.Parameters.AddWithValue("@Nome", this.Name);
-                        cmd.Parameters.AddWithValue("@Email", this.Email);
-                        cmd.Parameters.AddWithValue("@Senha", this.Password);
+                        cmd.Parameters.AddWithValue("@id_product", this.Id_Product);
+                        cmd.Parameters.AddWithValue("@Name", this.Name);
+                        cmd.Parameters.AddWithValue("@Description", this.Description);
+                        cmd.Parameters.AddWithValue("@Price", this.Price);
 
 
                         int linhasAfetada = cmd.ExecuteNonQuery();
@@ -138,9 +142,9 @@ namespace ClassLibraryUser
                 return false;
 
             }
-            
+
         }
-        // remove 
+        // remoção deletar do banco
         public bool Remover()
         {
 
@@ -153,8 +157,8 @@ namespace ClassLibraryUser
                     cn.Open();
                     using (SqlCommand cmd = new SqlCommand(sql, cn))
                     {
-                        cmd.Parameters.AddWithValue("@idUsuario", this.Id);
-                        
+                        cmd.Parameters.AddWithValue("@idUsuario", this.Id_Product);
+
 
                         int linhasAfetada = cmd.ExecuteNonQuery();
                         return linhasAfetada > 0;
