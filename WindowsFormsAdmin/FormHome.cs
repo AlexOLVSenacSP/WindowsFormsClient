@@ -31,7 +31,7 @@ namespace WindowsFormsAdmin
 
             // Pesquisa na tabela
             DataTable dt = _product.ProductSearch(name,description);
-            MessageBox.Show(_product.ProductSearch(name, description).ToString());
+            //MessageBox.Show(_product.ProductSearch(name, description).ToString());
             //Atualizar DataGridView
             dgvProduct.DataSource = dt; 
 

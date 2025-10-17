@@ -56,9 +56,9 @@
             // dgvProduct
             // 
             this.dgvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProduct.Location = new System.Drawing.Point(119, 205);
+            this.dgvProduct.Location = new System.Drawing.Point(87, 204);
             this.dgvProduct.Name = "dgvProduct";
-            this.dgvProduct.Size = new System.Drawing.Size(240, 150);
+            this.dgvProduct.Size = new System.Drawing.Size(701, 158);
             this.dgvProduct.TabIndex = 2;
             // 
             // lblDescricao
