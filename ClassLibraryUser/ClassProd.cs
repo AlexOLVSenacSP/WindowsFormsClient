@@ -35,7 +35,7 @@ namespace ClassLibraryUser
         {
             // DataTable dt = new DataTable(); usa toda memoria da sala 
             var dt = new DataTable();// var similar Varchar variavel temporario
-            string sql = "SELECT Name, Description FROM Product WHERE Name LIKE @name OR Description LIKE @description;"; // Name Description igua BD
+            string sql = "SELECT * FROM Product WHERE Name LIKE @name ;"; // Name Description igua BD
 
             try
             {
@@ -45,7 +45,7 @@ namespace ClassLibraryUser
                     using (SqlCommand cmd = new SqlCommand(sql, cn))
                     {
                         cmd.Parameters.AddWithValue("@name", $"%{name}%");
-                        cmd.Parameters.AddWithValue("@description", $"%{description}%");
+                        //cmd.Parameters.AddWithValue("@description", $"%{description}%");
 
                         using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                         {
