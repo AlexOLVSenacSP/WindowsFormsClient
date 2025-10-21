@@ -66,7 +66,7 @@ namespace WindowsFormsAdmin
             bool status = true;
 
             //entrada de dados 
-            id_product = Convert.ToInt16(lblId);
+            id_product = Convert.ToInt16(lblId.TabIndex);
             name = tbxPesquisa.Text;
             description = tbxDescricao.Text;
             price = Convert.ToDouble(tbxPrice.Text);
@@ -91,7 +91,9 @@ namespace WindowsFormsAdmin
         private void btnDelete_Click(object sender, EventArgs e)
         {
             //inicialização
-            int id_product = Convert.ToInt16(lblId.Text);
+            int id_product = 0;
+
+            id_product = Convert.ToInt16(lblId.Text);
 
             //processamento
             ClassProd _product = new ClassProd(id_product, "", "", 0.0, true);
@@ -119,7 +121,7 @@ namespace WindowsFormsAdmin
             {
                 dgvProduct.Rows[hit.RowIndex].Selected = true;
 
-                lblCode.Text = dgvProduct.Rows[hit.RowIndex].Cells["id_product"].Value.ToString();
+                lblId.Text = dgvProduct.Rows[hit.RowIndex].Cells["id_product"].Value.ToString();
                 lblpesquisa.Text = dgvProduct.Rows[hit.RowIndex].Cells["name"].Value.ToString();
                 lblDescricao.Text = dgvProduct.Rows[hit.RowIndex].Cells["description"].Value.ToString();
                 lblPrice.Text = dgvProduct.Rows[hit.RowIndex].Cells["price"].Value.ToString();
