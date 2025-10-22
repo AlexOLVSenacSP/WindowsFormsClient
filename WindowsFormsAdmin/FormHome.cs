@@ -59,21 +59,21 @@ namespace WindowsFormsAdmin
 
         {
             // incialização
-            int id_product = 0;
-            string name = "";
-            string description = "";
-            Double price = 0.0;
-            bool status = true;
+            int id_Product = 0;
+            string Name = "";
+            string Description = "";
+            double Price = 0.0;
+            bool Status = true;
 
             //entrada de dados 
-            id_product = Convert.ToInt16(lblId.TabIndex);
-            name = tbxPesquisa.Text;
-            description = tbxDescricao.Text;
-            price = Convert.ToDouble(tbxPrice.Text);
-            status = rbtnStored.Checked;
+            id_Product = Convert.ToInt16(lblId.Text);
+            Name = tbxPesquisa.Text;
+            Description = tbxDescricao.Text;
+            Price = Convert.ToDouble(tbxPrice.Text);
+            Status = rbtnStored.Checked;
 
             //Processamento
-            ClassProd _product = new ClassProd(id_product, name, description, price, status);
+            ClassProd _product = new ClassProd(id_Product, Name, Description, Price, Status);
 
             if (_product.Atualizar())
             {
@@ -137,28 +137,18 @@ namespace WindowsFormsAdmin
             }
 
         }
-    
 
-        //private void dgvProduct_MouseDoubleClick(object sender, MouseEventArgs e)
-
-        //var hit = dvgproduct.hittest(e.x, e.y);
-        //  {
-        //    if (hit.rowindex >= 0)
-
-        //    { 
-        //          dvg.product.rows[hit.rowindex].select = true;
-
-        //          lblcode.text = dvgproduct.rows[hit.rowindex].cells["id_product"].value.tostring();
-        //          lblsearch.text = dvgproduct.rows[hit.rowindex].cells["name"].value.tostring();
-        //          lbldecription.text = dvgproduct.rows[hit.rowindex].cells["description"].value.tostring();
-        //          lblprice.text = dvgproduct.rows[hit.rowindex].cells["price"].value.tostring();
-        //          bool ativo = convert.toboolean(dvgproduct.rows[hit.rowindex].cells["status"].value.tostring();
-        //          if (ativo)
-        //          {
-        //          rbtnstored.checked = ativo;
-        //          }
-        //          else { rbtnstored.checked = !ativo; }
-        //    }
-        //}
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            ClassProd _product = new ClassProd(0, tbxPesquisa.Text, tbxDescricao.Text, Convert.ToDouble(tbxPrice.Text), true);
+            if (_product.Registrar())
+            {
+                MessageBox.Show("Sucesso"); //Saída
+            }
+            else
+            {
+                MessageBox.Show("Erro"); //Saída
+            }
+        }
     }
 }

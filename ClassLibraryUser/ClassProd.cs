@@ -91,8 +91,8 @@ namespace ClassLibraryUser
                         cmd.Parameters.AddWithValue("@Status", this.Status);
 
 
-                        int linhasAfetada = cmd.ExecuteNonQuery();
-                        return linhasAfetada > 0;
+                        return cmd.ExecuteNonQuery() > 0;
+                        
 
                     }
 
@@ -112,7 +112,7 @@ namespace ClassLibraryUser
         public bool Atualizar()
         {
 
-            string sql = "UPDATE Product SET name@Name, description=@Description, price=@Price, status=@Status WHERE id_product=@id;";
+            string sql = "UPDATE Product SET Name=@Name, Description=@Description, Price=@Price, Status=@Status WHERE id_Product=@idproduct;";
 
             try
             {
@@ -121,15 +121,15 @@ namespace ClassLibraryUser
                     cn.Open();
                     using (SqlCommand cmd = new SqlCommand(sql, cn))
                     {
-                        cmd.Parameters.AddWithValue("@id_product", this.Id_Product);
+                        cmd.Parameters.AddWithValue("@idproduct", this.Id_Product);
                         cmd.Parameters.AddWithValue("@Name", this.Name);
                         cmd.Parameters.AddWithValue("@Description", this.Description);
                         cmd.Parameters.AddWithValue("@Price", this.Price);
+                        cmd.Parameters.AddWithValue("@Status",this.Status);
 
 
-                        int linhasAfetada = cmd.ExecuteNonQuery();
-                        return linhasAfetada > 0;
-
+                        return cmd.ExecuteNonQuery() > 0;
+                        
                     }
 
                 }
@@ -148,7 +148,7 @@ namespace ClassLibraryUser
         public bool Remover()
         {
 
-            string sql = "DELETE from Usuario WHERE id_Usuario=@idUsuario;";
+            string sql = "DELETE from Product WHERE id_Product=@idProduct;";
 
             try
             {
@@ -157,12 +157,11 @@ namespace ClassLibraryUser
                     cn.Open();
                     using (SqlCommand cmd = new SqlCommand(sql, cn))
                     {
-                        cmd.Parameters.AddWithValue("@idUsuario", this.Id_Product);
+                        cmd.Parameters.AddWithValue("@idProduct", this.Id_Product);
 
 
-                        int linhasAfetada = cmd.ExecuteNonQuery();
-                        return linhasAfetada > 0;
-
+                        return cmd.ExecuteNonQuery() > 0;
+                        
                     }
 
                 }

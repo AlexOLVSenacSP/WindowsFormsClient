@@ -140,6 +140,7 @@
             this.btnCreate.TabIndex = 10;
             this.btnCreate.Text = "Cadastrar";
             this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
             // 
             // btnUpdate
             // 
